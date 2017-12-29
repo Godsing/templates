@@ -1,110 +1,47 @@
----?image=assets/image/jeremy-bishop.jpg
+# 《BlindBox》论文笔记
 
-# Space
+[TOC]
 
-### A GitPitch Presentation Template
+*原文标题《BlindBox: Deep Packet Inspection over Encrypted Traffic》*
 
----?image=assets/image/kyle-gregory-devaras.jpg
+## 摘要
 
-## Tips!
+### MiddleBox & DPI Intro.
 
-<br>
+网络中间件（Network MiddleBox）：*deep packet inspection*（DPI）
 
-@fa[arrows gp-tip](Press F to go Fullscreen)
+DPI Tasks：
 
-@fa[microphone gp-tip](Press S for Speaker Notes)
+- Intrusion detection(IDS)
+- Exfiltration detection
+- Parental filtering
 
----?image=assets/image/kyle-gregory-devaras.jpg
 
-## Template Features
 
-- Code Presenting |
-- Repo Source, Static Blocks, GIST |
-- Custom CSS Styling |
-- Slideshow Background Image |
-- Slide-specific Background Images |
-- Custom Logo, TOC, and Footnotes |
+### A long-standing issue
 
----?code=src/go/server.go&lang=golang&title=Golang File
+Once packets are sent over HTTPS, middleboxes can no longer accomplish their tasks because the payloads are encrypted.
 
-@[1,3-6](Present code found within any repo source file.)
-@[8-18](Without ever leaving your slideshow.)
-@[19-28](Using GitPitch code-presenting with (optional) annotations.)
+ Hence, one is faced with the choice of only one of two desirable properties: the **functionality** of middle-boxes and the **privacy** of encryption.
 
----?image=assets/image/john-reign-abarintos.jpg
 
-@title[JavaScript Block]
 
-<p><span class="slide-title">JavaScript Block</span></p>
+### Solution: BlindBox
 
-```javascript
-// Include http module.
-var http = require("http");
+BlindBox is the first system that simultaneously provides both of these properties.
 
-// Create the server. Function passed as parameter
-// is called on every request made.
-http.createServer(function (request, response) {
-  // Attach listener on end event.  This event is
-  // called when client sent, awaiting response.
-  request.on("end", function () {
-    // Write headers to the response.
-    // HTTP 200 status, Content-Type text/plain.
-    response.writeHead(200, {
-      'Content-Type': 'text/plain'
-    });
-    // Send data and end response.
-    response.end('Hello HTTP!');
-  });
+**Approach**:  perform the deep-packet inspection *directly on the encrypted traffic*.
 
-// Listen on the 8080 port.
-}).listen(8080);
-```
+**Realizes** this approach through: a new protocol and new encryption schemes.
 
-@[1,2](You can present code inlined within your slide markdown too.)
-@[9-17](Displayed using code-syntax highlighting just like your IDE.)
-@[19-20](Again, all of this without ever leaving your slideshow.)
 
----?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
-@[23](You can even present code found within any GitHub GIST.)
-@[41-53](GIST source code is beautifully rendered on any slide.)
-@[57-62](And code-presenting works seamlessly for GIST too, both online and offline.)
+### Features of BlindBox
 
----?image=assets/image/kyle-gregory-devaras.jpg
+- Enables applications like MiddleBox
+- Supports real rulesets from both *open-source* and *industrial DPI systems*
+- Practical for settings with long-lived HTTPS connections
+- Its core encryption scheme is 3-6 orders of magnitude faster
 
-## Template Help
 
-- [Code Presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting)
-  + [Repo Source](https://github.com/gitpitch/gitpitch/wiki/Code-Delimiter-Slides), [Static Blocks](https://github.com/gitpitch/gitpitch/wiki/Code-Slides), [GIST](https://github.com/gitpitch/gitpitch/wiki/GIST-Slides) 
-- [Custom CSS Styling](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS)
-- [Slideshow Background Image](https://github.com/gitpitch/gitpitch/wiki/Background-Setting)
-- [Slide-specific Background Images](https://github.com/gitpitch/gitpitch/wiki/Image-Slides#background)
-- [Custom Logo](https://github.com/gitpitch/gitpitch/wiki/Logo-Setting), [TOC](https://github.com/gitpitch/gitpitch/wiki/Table-of-Contents), and [Footnotes](https://github.com/gitpitch/gitpitch/wiki/Footnote-Setting)
-
----?image=assets/image/gitpitch-audience.jpg
-
-### Template Versions
-
-- #### [Base Template  @fa[external-link gp-download]](https://gitpitch.com/gitpitch/templates/space)
-- #### [Code Maximized @fa[external-link gp-download]](https://gitpitch.com/gitpitch/templates/space?p=codemax)
-- #### [Speaker Notes @fa[external-link gp-download]](https://gitpitch.com/gitpitch/templates/space?p=speaker)
-
----?image=assets/image/kyle-gregory-devaras.jpg
-
-### Questions?
-
-<br>
-
-@fa[twitter gp-contact](@gitpitch)
-
-@fa[github gp-contact](gitpitch)
-
-@fa[medium gp-contact](@gitpitch)
-
----?image=assets/image/gitpitch-audience.jpg
-
-@title[Download this Template!]
-
-### Get your presentation started!
-### [Download this template @fa[external-link gp-download]](https://gitpitch.com/template/download/space)
 
