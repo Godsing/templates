@@ -14,9 +14,9 @@
 
 ### 1. 知识图谱是什么？
 
-从抽象层面来讲，知识图谱是一张特殊的语义网络，用来描述真实世界中存在的：实体或概念，它们之间的关联关系，以及它们的自身属性。 |
+从抽象层面来讲，知识图谱是一张特殊的语义网络，用来描述真实世界中存在的：实体或概念，它们之间的关联关系，以及它们的自身属性。 
 
-广义上讲，知识图谱是图状、具有关联性的知识集合。 |
+广义上讲，知识图谱是图状、具有关联性的知识集合。 
 
 其中：
 
@@ -27,6 +27,8 @@
 
 ## 2. 知识图谱与本体、知识库的关系
 
+---
+
 ### 2.1 什么是本体？
 
 > 维基百科：In computer science and information science, an ontology is a **formal naming and definition of the types, properties, and interrelationships of the entities** that really or fundamentally exist for **a particular domain** of discourse. It is thus a practical application of philosophical ontology, with a taxonomy(分类学).
@@ -36,8 +38,6 @@
 ### 2.1 什么是本体？
 
 领域术语集合。本体简单理解就是概念、概念属性、概念关系的集合。一个概念能够描述某个具体的领域里的一类事物的抽象定义或共有特征（≈编程语言里的“类”），概念本身有属性，然后概念间又有一定的关系。因为概念的抽象层次不同(比如：生物->动物->狗)，所以是具有层级特征的结构。
-
-
 
 ---
 
